@@ -69,49 +69,6 @@ body { font-family: Arial, sans-serif; background: linear-gradient(160deg,#1B4D2
 .vbar { border-radius:12px; padding:14px 18px; font-size:14px; font-weight:700; text-align:center; margin-top:14px; }
 .vg { background:#2E7D32; color:#fff; }
 .vgr { background:#E3F2FD; color:#0D47A1; }
-.overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.5); z-index:100; overflow-y:scroll; -webkit-overflow-scrolling:touch; padding:20px 16px; }
-.overlay.open { display:block; }
-.panel { background:#fff; border-radius:20px; max-width:640px; margin:0 auto; padding:24px; }
-.ph { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
-.ph h2 { font-size:18px; font-weight:700; color:#1a1a1a; }
-.pclose { width:36px; height:36px; border-radius:50%; border:none; background:#f0f0f0; font-size:18px; cursor:pointer; }
-.psec { margin-bottom:22px; }
-.psect { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#2E7D32; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid #eee; }
-.gfgrid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.gfi { display:flex; align-items:center; gap:8px; }
-.gfi label { font-size:13px; color:#444; flex:1; }
-.gfi input { width:70px; font-size:16px; font-weight:700; padding:7px 8px; border:1.5px solid #ddd; border-radius:8px; background:#f9f9f9; text-align:right; outline:none; color:#1a1a1a; }
-.gfi input:focus { border-color:#2E7D32; background:#fff; }
-.gfi span { font-size:12px; color:#888; }
-.frow2 { display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:10px; background:#f9f9f9; border:1px solid #eee; margin-bottom:8px; flex-wrap:wrap; }
-.frow2 input[type=text] { flex:1; min-width:100px; font-size:16px; padding:6px 8px; border:1px solid #ddd; border-radius:7px; background:#fff; outline:none; color:#1a1a1a; }
-.frow2 input[type=text]:focus { border-color:#2E7D32; }
-.fpg { display:flex; align-items:center; gap:4px; flex-shrink:0; }
-.fpg label { font-size:10px; color:#888; white-space:nowrap; }
-.fpg input[type=number] { width:64px; font-size:14px; font-weight:700; padding:5px; border:1px solid #ddd; border-radius:7px; background:#fff; text-align:right; outline:none; color:#1a1a1a; }
-.fpg input:focus { border-color:#2E7D32; }
-.fpg span { font-size:11px; color:#888; }
-.tbadge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px; flex-shrink:0; }
-.tpub { background:#E3F2FD; color:#1565C0; }
-.tfix { background:#E8F5E9; color:#1B5E20; }
-.tgf  { background:#F3E5F5; color:#7B1FA2; }
-.tcar { background:#FFF3E0; color:#E65100; }
-.delbtn { width:30px; height:30px; border:none; background:#FFEBEE; border-radius:50%; color:#C62828; font-size:16px; cursor:pointer; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
-.addbtn { width:100%; padding:10px; border:2px dashed #A5D6A7; border-radius:10px; background:transparent; color:#2E7D32; font-size:13px; font-weight:600; cursor:pointer; }
-.addbtn:hover { background:#F1F8E9; border-color:#2E7D32; }
-.mrow { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
-.mrow label { font-size:12px; font-weight:600; color:#444; }
-.mrow input,.mrow select { font-size:16px; padding:9px 12px; border:1.5px solid #ddd; border-radius:9px; background:#f9f9f9; color:#1a1a1a; outline:none; }
-.mrow input:focus,.mrow select:focus { border-color:#2E7D32; background:#fff; }
-.mhint { font-size:11px; color:#888; margin-top:3px; }
-.maddbt { width:100%; padding:12px; background:#2E7D32; color:#fff; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; margin-top:4px; }
-.maddbt:hover { background:#1B5E20; }
-.addform { display:none; background:#f9f9f9; border-radius:12px; padding:16px; margin-top:12px; border:1px solid #eee; }
-.addform h4 { font-size:13px; font-weight:700; color:#2E7D32; margin-bottom:14px; }
-.profrow { display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:10px; background:#f9f9f9; border:1px solid #eee; margin-bottom:8px; flex-wrap:wrap; }
-.profrow input { font-size:16px; padding:6px 8px; border:1px solid #ddd; border-radius:7px; background:#fff; outline:none; color:#1a1a1a; -webkit-appearance:none; }
-.profrow input:focus { border-color:#2E7D32; }
-.prlabel { font-size:10px; color:#888; white-space:nowrap; }
 .payblock { display:none; margin-top:18px; border-top:1px solid #eee; padding-top:18px; }
 .paygrid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
 .paycol { border-radius:12px; padding:16px; border:2px solid #A5D6A7; background:#E8F5E9; }
@@ -123,7 +80,7 @@ body { font-family: Arial, sans-serif; background: linear-gradient(160deg,#1B4D2
   .rname { font-size:13px!important; } .rprice { font-size:17px!important; }
   .r1 .rprice { font-size:19px!important; } .rdiff { font-size:10px; padding:2px 8px; }
   .cmpcard,.card { padding:14px; } .cmptitle { font-size:12px; }
-  .gfgrid { grid-template-columns:1fr; } .header h1 { font-size:18px; }
+  .header h1 { font-size:18px; }
 }
 </style>
 </head>
@@ -131,11 +88,8 @@ body { font-family: Arial, sans-serif; background: linear-gradient(160deg,#1B4D2
 <div class="app">
 
 <div class="header">
-  <div style="position:relative;text-align:center;">
-    <h1>Simulateur de tarifs</h1>
-    <p>Indiquez votre fréquence de jeu pour connaître la formule la plus avantageuse</p>
-    <button onclick="openP()" title="Paramètres" style="position:absolute;top:0;right:0;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.45);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&#9881;</button>
-  </div>
+  <h1>Simulateur de tarifs</h1>
+  <p>Indiquez votre fréquence de jeu pour connaître la formule la plus avantageuse</p>
 </div>
 
 <div class="card">
@@ -181,121 +135,79 @@ body { font-family: Arial, sans-serif; background: linear-gradient(160deg,#1B4D2
 
 </div>
 
-<!-- PARAMS -->
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeP()">
-<div class="panel">
-  <div class="ph"><h2>&#9881; Paramètres</h2><button class="pclose" onclick="closeP()">&#10005;</button></div>
-
-  <div class="psec">
-    <div class="psect">Green fees publics de référence</div>
-    <div class="gfgrid">
-      <div class="gfi"><label>18 trous</label><input type="number" id="pub18" value="65" min="1"><span>€</span></div>
-      <div class="gfi"><label>9 trous</label><input type="number" id="pub9" value="43" min="1"><span>€</span></div>
-    </div>
-  </div>
-
-  <div class="psec">
-    <div class="psect">Formules disponibles</div>
-    <div id="flist"></div>
-    <button class="addbtn" onclick="tog('addF')">+ Ajouter une formule</button>
-    <div class="addform" id="addF">
-      <h4>Nouvelle formule</h4>
-      <div class="mrow"><label>Nom</label><input type="text" id="nname" placeholder="ex: Abonnement Famille"></div>
-      <div class="mrow"><label>Type</label>
-        <select id="ntype" onchange="togFields()">
-          <option value="fixed">Abonnement — coût mensuel fixe (green fees offerts)</option>
-          <option value="gf">Green fees réduits + carte annuelle optionnelle</option>
-          <option value="carnet">Carnet de green fees (1 ticket=9T, 2 tickets=18T)</option>
-        </select>
-      </div>
-      <div id="nfixed">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div class="mrow"><label>Mensuel</label><input type="number" id="nmon" placeholder="199" min="0"><div class="mhint">€/mois</div></div>
-          <div class="mrow"><label>Comptant/an</label><input type="number" id="nann" placeholder="2334" min="0"><div class="mhint">€/an — optionnel</div></div>
-        </div>
-      </div>
-      <div id="ngf" style="display:none;">
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
-          <div class="mrow"><label>18T</label><input type="number" id="ngf18" placeholder="49" min="0"><div class="mhint">€/parcours</div></div>
-          <div class="mrow"><label>9T</label><input type="number" id="ngf9" placeholder="32" min="0"><div class="mhint">€/parcours</div></div>
-          <div class="mrow"><label>Carte/an</label><input type="number" id="ngfann" placeholder="59" min="0"><div class="mhint">€/an</div></div>
-        </div>
-      </div>
-      <div id="ncarnet" style="display:none;">
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
-          <div class="mrow"><label>Nb tickets</label><input type="number" id="ncqty" placeholder="10" min="1"></div>
-          <div class="mrow"><label>Prix carnet 9T</label><input type="number" id="nc9" placeholder="340" min="0"><div class="mhint">€ total</div></div>
-          <div class="mrow"><label>Prix carnet 18T</label><input type="number" id="nc18" placeholder="520" min="0"><div class="mhint">€ total</div></div>
-        </div>
-      </div>
-      <div class="mrow"><label>Description</label><input type="text" id="ndesc" placeholder="ex: Green fees offerts"></div>
-      <button class="maddbt" onclick="addF()">Ajouter</button>
-    </div>
-  </div>
-
-  <div class="psec" id="psec">
-    <div class="psect">Profils d'abonnement</div>
-    <div style="font-size:12px;color:#888;margin-bottom:12px;line-height:1.5;">Définissez les tarifs selon la situation du joueur (âge, statut…).</div>
-    <div id="proflist"></div>
-    <button class="addbtn" onclick="tog('addPF')" style="margin-top:8px;">+ Ajouter un profil</button>
-    <div class="addform" id="addPF">
-      <h4>Nouveau profil</h4>
-      <div class="mrow"><label>Nom</label><input type="text" id="nplabel" placeholder="ex: Senior"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-        <div class="mrow"><label>Mensuel</label><input type="number" id="npmon" placeholder="150" min="0"><div class="mhint">€/mois</div></div>
-        <div class="mrow"><label>Comptant/an</label><input type="number" id="npann" placeholder="1700" min="0"><div class="mhint">€/an — optionnel</div></div>
-      </div>
-      <button class="maddbt" onclick="addPF()">Ajouter</button>
-    </div>
-  </div>
-
-  <div style="margin-top:16px;padding-top:16px;border-top:1px solid #eee;">
-    <button onclick="forceSave()" style="width:100%;padding:14px;background:#2E7D32;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;">✓ Enregistrer les paramètres</button>
-    <div id="saveMsg" style="text-align:center;font-size:12px;color:#2E7D32;margin-top:8px;height:16px;"></div>
-  </div>
-
-</div>
-</div>
-
 <script>
-var FM='sem', PI=0;
-var DATA={
-  pub18:65, pub9:43,
-  formules:[
-    {id:1,name:'Tarif public',type:'pub',desc:'Green fees plein tarif'},
-    {id:2,name:'Carte LeClub Classic',type:'gf',desc:'Green fees réduits',gf18:49,gf9:32,annualCard:59},
-    {id:4,name:'Carnet 10 green fees',type:'carnet',desc:'1 ticket=9T / 2 tickets=18T',carnetQty:10,carnet9Total:340,carnet18Total:520},
-    {id:3,name:'Abonnement annuel',type:'fixed',desc:'Green fees offerts',profiles:[
-      {label:'Adulte',      monthly:199,annual:2334},
-      {label:'Adulte Primo',monthly:159,annual:1867},
-      {label:'Couple',      monthly:319,annual:3736},
-      {label:'Étudiant',    monthly:130,annual:1517},
-      {label:'Jeune',       monthly:80, annual:467}
-    ]}
-  ]
-};
-var NID=10;
+/* ============================================================
+   DONNÉES — modifiez directement ici
+   ============================================================ */
 
-function save(){
-  try { localStorage.setItem('gdb3',JSON.stringify(DATA)); } catch(e){}
-}
-function load(){
-  try {
-    var s=localStorage.getItem('gdb3');
-    if(s){ DATA=JSON.parse(s); NID=Math.max.apply(null,DATA.formules.map(function(f){return f.id||0;}))+1; }
-  } catch(e){}
-}
+// Green fees publics de référence (€)
+var GF_PUB_18 = 65;   // green fee 18 trous plein tarif
+var GF_PUB_9  = 43;   // green fee 9 trous plein tarif
+
+/* -- Formules disponibles -----------------------------------
+   Chaque formule est un objet avec un "type" :
+
+   TYPE "pub"    → tarif public (référence, pas de données à saisir)
+   TYPE "gf"     → green fees réduits + carte annuelle optionnelle
+                   champs : gf18 (€/18T), gf9 (€/9T), annualCard (€/an)
+   TYPE "carnet" → carnet de tickets (1 ticket = 9T, 2 tickets = 18T)
+                   champs : carnetQty (nb tickets), carnet9Total (€ total 9T), carnet18Total (€ total 18T)
+   TYPE "fixed"  → abonnement mensuel, green fees offerts
+                   champs : profiles (tableau de profils, voir ci-dessous)
+------------------------------------------------------------- */
+var FORMULES = [
+  {
+    id: 1,
+    type: 'pub',
+    name: 'Tarif public',
+    desc: 'Green fees - plein tarif'
+  },
+  {
+    id: 2,
+    type: 'gf',
+    name: 'Carte "LeClub Classic"',
+    desc: 'Green fees - tarifs réduits',
+    gf18: 49,           // € par 18 trous
+    gf9:  32,           // € par 9 trous
+    annualCard: 59      // € coût de la carte / an (amorti sur 12 mois)
+  },
+  {
+    id: 4,
+    type: 'carnet',
+    name: 'Carnet 10 green fees',
+    desc: '1 ticket = 9 trous / 2 tickets = 18 trous',
+    carnetQty:      10, // nombre de tickets dans le carnet
+    carnet9Total:  340, // prix total du carnet 9T (€)
+    carnet18Total: 520  // prix total du carnet 18T (€)
+  },
+  {
+    id: 3,
+    type: 'fixed',
+    name: 'Abonnement annuel',
+    desc: 'Green fees offerts',
+    /* Profils : autant de lignes que nécessaire
+       label   → nom affiché sur le bouton
+       monthly → cotisation mensuelle (€/mois)
+       annual  → cotisation comptant (€/an) — laisser 0 si non disponible */
+    profiles: [
+      { label: 'Adulte',       monthly: 199, annual: 2334 },
+      { label: 'Adulte Primo', monthly: 159, annual: 1867 },
+      { label: 'Couple',       monthly: 319, annual: 3736 },
+      { label: 'Étudiant',     monthly: 130, annual: 1517 },
+      { label: 'Jeune',        monthly:  80, annual:  467 }
+    ]
+  }
+];
+
+/* ============================================================
+   FIN DES DONNÉES — ne pas modifier en dessous
+   ============================================================ */
+
+var FM = 'sem', PI = 0;
 
 function v(id){ var e=document.getElementById(id); return e?(+e.value||0):0; }
-function vt(id){ var e=document.getElementById(id); return e?e.value.trim():''; }
 function fmt(n){ return Math.round(n).toLocaleString('fr-FR')+' €'; }
-function tog(id){ var e=document.getElementById(id); e.style.display=e.style.display==='none'?'block':'none'; }
-function togFields(){
-  var t=vt('ntype');
-  document.getElementById('nfixed').style.display=t==='fixed'?'block':'none';
-  document.getElementById('ngf').style.display=t==='gf'?'block':'none';
-  document.getElementById('ncarnet').style.display=t==='carnet'?'block':'none';
-}
+
 function step(id,d){
   var e=document.getElementById(id);
   e.value=Math.min(+e.max||99,Math.max(+e.min||0,(+e.value||0)+d));
@@ -318,10 +230,10 @@ function getFreq(){
   return {t18:Math.round(f18*(act/52)*10)/10,t9:Math.round(f9*(act/52)*10)/10};
 }
 
-function getFxd(){ return DATA.formules.find(function(f){return f.type==='fixed'&&f.profiles;}); }
+function getFxd(){ return FORMULES.find(function(f){return f.type==='fixed'&&f.profiles;}); }
 
 function costOf(f,t18,t9){
-  if(f.type==='pub')    return t18*DATA.pub18+t9*DATA.pub9;
+  if(f.type==='pub')    return t18*GF_PUB_18+t9*GF_PUB_9;
   if(f.type==='gf')     return (f.annualCard||0)/12+t18*(f.gf18||0)+t9*(f.gf9||0);
   if(f.type==='carnet'){
     var qty=f.carnetQty||10;
@@ -351,7 +263,7 @@ function selP(i){
 
 function calc(){
   var fr=getFreq();
-  var res=DATA.formules.map(function(f){
+  var res=FORMULES.map(function(f){
     return {id:f.id,name:f.name,desc:f.desc||'',type:f.type,cost:costOf(f,fr.t18,fr.t9),fm:f};
   }).sort(function(a,b){return a.cost-b.cost;});
   var best=res[0].cost;
@@ -412,131 +324,7 @@ function calc(){
   }
 }
 
-function openP(){
-  document.getElementById('overlay').className='overlay open';
-  document.getElementById('pub18').value=DATA.pub18;
-  document.getElementById('pub9').value=DATA.pub9;
-  renderFList();
-  renderPList();
-}
-function closeP(){ document.getElementById('overlay').className='overlay'; }
-
-function renderFList(){
-  var html=DATA.formules.map(function(f){
-    var badge='<span class="tbadge '+(f.type==='pub'?'tpub':f.type==='fixed'?'tfix':f.type==='carnet'?'tcar':'tgf')+'">'+(f.type==='pub'?'Public':f.type==='fixed'?'Abo':f.type==='carnet'?'Carnet':'GF réduits')+'</span>';
-    var del=DATA.formules.length>1?'<button class="delbtn" onclick="delF('+f.id+')">✕</button>':'';
-    var pi='';
-    if(f.type==='pub') pi='<span style="font-size:11px;color:#888;">Tarifs de référence</span>';
-    else if(f.type==='gf') pi=
-      '<div class="fpg"><label>18T</label><input type="number" value="'+(f.gf18||0)+'" oninput="uf('+f.id+',\'gf18\',+this.value)"><span>€</span></div>'+
-      '<div class="fpg"><label>9T</label><input type="number" value="'+(f.gf9||0)+'" oninput="uf('+f.id+',\'gf9\',+this.value)"><span>€</span></div>'+
-      '<div class="fpg"><label>Carte/an</label><input type="number" value="'+(f.annualCard||0)+'" oninput="uf('+f.id+',\'annualCard\',+this.value)"><span>€</span></div>';
-    else if(f.type==='carnet') pi=
-      '<div class="fpg"><label>Tickets</label><input type="number" value="'+(f.carnetQty||10)+'" oninput="uf('+f.id+',\'carnetQty\',+this.value)"></div>'+
-      '<div class="fpg"><label>9T total</label><input type="number" value="'+(f.carnet9Total||0)+'" oninput="uf('+f.id+',\'carnet9Total\',+this.value)"><span>€</span></div>'+
-      '<div class="fpg"><label>18T total</label><input type="number" value="'+(f.carnet18Total||0)+'" oninput="uf('+f.id+',\'carnet18Total\',+this.value)"><span>€</span></div>';
-    else if(f.type==='fixed'&&f.profiles) pi=f.profiles.map(function(p,pi){
-      return '<div class="fpg"><label>'+p.label+'</label><input type="number" value="'+p.monthly+'" oninput="up('+f.id+','+pi+',+this.value)"><span>€/mois</span></div>';
-    }).join('');
-    return '<div class="frow2">'+badge+'<input type="text" value="" oninput="uf('+f.id+',\'name\',this.value)" style="flex:1;min-width:100px;" id="fn'+f.id+'">'+pi+del+'</div>';
-  }).join('');
-  document.getElementById('flist').innerHTML=html;
-  DATA.formules.forEach(function(f){
-    var e=document.getElementById('fn'+f.id);
-    if(e) e.value=f.name;
-  });
-}
-
-function uf(id,k,val){ var f=DATA.formules.find(function(x){return x.id===id;}); if(!f)return; f[k]=val; calc(); save(); }
-function up(fid,pi,val){ var f=DATA.formules.find(function(x){return x.id===fid;}); if(!f||!f.profiles)return; f.profiles[pi].monthly=val; calc(); save(); }
-function delF(id){
-  if(DATA.formules.length<=1){alert('Il faut garder au moins une formule.');return;}
-  DATA.formules=DATA.formules.filter(function(f){return f.id!==id;});
-  renderFList(); renderPList(); buildPBtns(); calc(); save();
-}
-function addF(){
-  var name=vt('nname'),type=vt('ntype'),desc=vt('ndesc');
-  if(!name){alert('Veuillez saisir un nom.');return;}
-  var f={id:NID++,name:name,type:type,desc:desc};
-  if(type==='fixed'){f.monthly=v('nmon');f.annual=v('nann');f.profiles=[{label:'Standard',monthly:f.monthly,annual:f.annual}];}
-  else if(type==='gf'){f.gf18=v('ngf18');f.gf9=v('ngf9');f.annualCard=v('ngfann');}
-  else if(type==='carnet'){f.carnetQty=v('ncqty')||10;f.carnet9Total=v('nc9');f.carnet18Total=v('nc18');}
-  DATA.formules.push(f);
-  ['nname','ndesc','nmon','nann','ngf18','ngf9','ngfann','ncqty','nc9','nc18'].forEach(function(i){var e=document.getElementById(i);if(e)e.value='';});
-  document.getElementById('addF').style.display='none';
-  renderFList(); renderPList(); buildPBtns(); calc(); save();
-}
-
-function renderPList(){
-  var fxd=getFxd();
-  var sec=document.getElementById('psec');
-  if(!fxd){sec.style.display='none';return;}
-  sec.style.display='block';
-  var profs=fxd.profiles;
-  var html=profs.map(function(p,i){
-    var canDel=profs.length>1;
-    return '<div class="profrow" id="pr'+i+'">'
-      +'<span class="tbadge tfix" style="flex-shrink:0;">Profil</span>'
-      +'<input id="pl'+i+'" type="text" style="flex:1;min-width:80px;" placeholder="Nom">'
-      +'<span class="prlabel">Mensuel</span>'
-      +'<input id="pm'+i+'" type="number" min="0" style="width:68px;font-weight:700;text-align:right;color:#1B5E20;">'
-      +'<span style="font-size:11px;color:#888;">€/mois</span>'
-      +'<span class="prlabel">Comptant</span>'
-      +'<input id="pa'+i+'" type="number" min="0" style="width:72px;font-weight:700;text-align:right;color:#888;">'
-      +'<span style="font-size:11px;color:#888;">€/an</span>'
-      +(canDel?'<button class="delbtn" id="pdel'+i+'">✕</button>':'<div style="width:30px;"></div>')
-      +'</div>';
-  }).join('');
-  document.getElementById('proflist').innerHTML=html;
-  // Valeurs via JS + listeners
-  profs.forEach(function(p,i){
-    var el=document.getElementById('pl'+i);
-    var em=document.getElementById('pm'+i);
-    var ea=document.getElementById('pa'+i);
-    var ex=document.getElementById('pdel'+i);
-    if(el) el.value=p.label||'';
-    if(em) em.value=p.monthly!=null?p.monthly:'';
-    if(ea) ea.value=p.annual!=null?p.annual:'';
-    if(el) { el.onchange=function(){ var fx=getFxd(); if(fx&&fx.profiles[i]){ fx.profiles[i].label=this.value; buildPBtns(); save(); } }; el.oninput=el.onchange; }
-    if(em) { em.onchange=function(){ var fx=getFxd(); if(fx&&fx.profiles[i]){ fx.profiles[i].monthly=+this.value||0; calc(); save(); } }; em.oninput=em.onchange; }
-    if(ea) { ea.onchange=function(){ var fx=getFxd(); if(fx&&fx.profiles[i]){ fx.profiles[i].annual=+this.value||0; calc(); save(); } }; ea.oninput=ea.onchange; }
-    if(ex) ex.onclick=function(){
-      var fx=getFxd(); if(!fx||fx.profiles.length<=1){alert('Il faut garder au moins un profil.');return;}
-      fx.profiles.splice(i,1); if(PI>=fx.profiles.length)PI=0;
-      renderPList(); buildPBtns(); calc(); save();
-    };
-  });
-}
-
-function forceSave(){
-  DATA.pub18=+document.getElementById('pub18').value||DATA.pub18;
-  DATA.pub9 =+document.getElementById('pub9').value ||DATA.pub9;
-  var fxd=getFxd();
-  if(fxd&&fxd.profiles){
-    fxd.profiles.forEach(function(p,i){
-      var el=document.getElementById('pl'+i);
-      var em=document.getElementById('pm'+i);
-      var ea=document.getElementById('pa'+i);
-      if(el) p.label  =el.value;
-      if(em) p.monthly=+em.value||0;
-      if(ea) p.annual =+ea.value||0;
-    });
-  }
-  save(); calc(); buildPBtns();
-  var msg=document.getElementById('saveMsg');
-  if(msg){msg.textContent='✓ Paramètres enregistrés';setTimeout(function(){msg.textContent='';},2500);}
-}
-
-function addPF(){
-  var fxd=getFxd(); if(!fxd){alert('Aucune formule abonnement.');return;}
-  var label=vt('nplabel'); if(!label){alert('Veuillez saisir un nom.');return;}
-  fxd.profiles.push({label:label,monthly:v('npmon'),annual:v('npann')});
-  ['nplabel','npmon','npann'].forEach(function(i){var e=document.getElementById(i);if(e)e.value='';});
-  document.getElementById('addPF').style.display='none';
-  renderPList(); buildPBtns(); calc(); save();
-}
-
-load(); buildPBtns(); calc();
+buildPBtns(); calc();
 </script>
 </body>
 </html>

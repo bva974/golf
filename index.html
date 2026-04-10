@@ -69,6 +69,7 @@ body { font-family: Arial, sans-serif; background: linear-gradient(160deg,#1B4D2
 .vbar { border-radius:12px; padding:14px 18px; font-size:14px; font-weight:700; text-align:center; margin-top:14px; }
 .vg { background:#2E7D32; color:#fff; }
 .vgr { background:#E3F2FD; color:#0D47A1; }
+
 .payblock { display:none; margin-top:18px; border-top:1px solid #eee; padding-top:18px; }
 .paygrid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
 .paycol { border-radius:12px; padding:16px; border:2px solid #A5D6A7; background:#E8F5E9; }
@@ -80,7 +81,7 @@ body { font-family: Arial, sans-serif; background: linear-gradient(160deg,#1B4D2
   .rname { font-size:13px!important; } .rprice { font-size:17px!important; }
   .r1 .rprice { font-size:19px!important; } .rdiff { font-size:10px; padding:2px 8px; }
   .cmpcard,.card { padding:14px; } .cmptitle { font-size:12px; }
-  .header h1 { font-size:18px; }
+  .gfgrid { grid-template-columns:1fr; } .header h1 { font-size:18px; }
 }
 </style>
 </head>
@@ -88,8 +89,11 @@ body { font-family: Arial, sans-serif; background: linear-gradient(160deg,#1B4D2
 <div class="app">
 
 <div class="header">
-  <h1>Simulateur de tarifs</h1>
-  <p>Indiquez votre fréquence de jeu pour connaître la formule la plus avantageuse</p>
+  <div style="position:relative;text-align:center;">
+    <h1>Simulateur de tarifs</h1>
+    <p>Indiquez votre fréquence de jeu pour connaître la formule la plus avantageuse</p>
+
+  </div>
 </div>
 
 <div class="card">
@@ -130,84 +134,90 @@ body { font-family: Arial, sans-serif; background: linear-gradient(160deg,#1B4D2
     </div>
     <div id="pverd" style="border-radius:10px;padding:12px 16px;font-size:13px;font-weight:700;text-align:center;"></div>
   </div>
-  <div class="vbar" id="vbar"></div>
+
 </div>
 
 </div>
+
+
 
 <script>
-/* ============================================================
-   DONNÉES — modifiez directement ici
-   ============================================================ */
-
-// Green fees publics de référence (€)
-var GF_PUB_18 = 65;   // green fee 18 trous plein tarif
-var GF_PUB_9  = 43;   // green fee 9 trous plein tarif
-
-/* -- Formules disponibles -----------------------------------
-   Chaque formule est un objet avec un "type" :
-
-   TYPE "pub"    → tarif public (référence, pas de données à saisir)
-   TYPE "gf"     → green fees réduits + carte annuelle optionnelle
-                   champs : gf18 (€/18T), gf9 (€/9T), annualCard (€/an)
-   TYPE "carnet" → carnet de tickets (1 ticket = 9T, 2 tickets = 18T)
-                   champs : carnetQty (nb tickets), carnet9Total (€ total 9T), carnet18Total (€ total 18T)
-   TYPE "fixed"  → abonnement mensuel, green fees offerts
-                   champs : profiles (tableau de profils, voir ci-dessous)
-------------------------------------------------------------- */
-var FORMULES = [
-  {
-    id: 1,
-    type: 'pub',
-    name: 'Tarif public',
-    desc: 'Green fees - plein tarif'
-  },
-  {
-    id: 2,
-    type: 'gf',
-    name: 'Carte "LeClub Classic"',
-    desc: 'Green fees - tarifs réduits',
-    gf18: 49,           // € par 18 trous
-    gf9:  32,           // € par 9 trous
-    annualCard: 59      // € coût de la carte / an (amorti sur 12 mois)
-  },
-  {
-    id: 4,
-    type: 'carnet',
-    name: 'Carnet 10 green fees',
-    desc: '1 ticket = 9 trous / 2 tickets = 18 trous',
-    carnetQty:      10, // nombre de tickets dans le carnet
-    carnet9Total:  340, // prix total du carnet 9T (€)
-    carnet18Total: 520  // prix total du carnet 18T (€)
-  },
-  {
-    id: 3,
-    type: 'fixed',
-    name: 'Abonnement annuel',
-    desc: 'Green fees offerts',
-    /* Profils : autant de lignes que nécessaire
-       label   → nom affiché sur le bouton
-       monthly → cotisation mensuelle (€/mois)
-       annual  → cotisation comptant (€/an) — laisser 0 si non disponible */
-    profiles: [
-      { label: 'Adulte',       monthly: 199, annual: 2334 },
-      { label: 'Adulte Primo', monthly: 159, annual: 1867 },
-      { label: 'Couple',       monthly: 319, annual: 3736 },
-      { label: 'Étudiant',     monthly: 130, annual: 1517 },
-      { label: 'Jeune',        monthly:  80, annual:  467 }
-    ]
-  }
-];
+var FM='sem', PI=0;
 
 /* ============================================================
-   FIN DES DONNÉES — ne pas modifier en dessous
+   ✏️  CONFIGURATION — modifiez uniquement cette section
    ============================================================ */
 
-var FM = 'sem', PI = 0;
+// 1. GREEN FEES PUBLICS DE RÉFÉRENCE (tarif plein sans formule)
+var PUB_18 = 65;   // € par parcours 18 trous
+var PUB_9  = 43;   // € par parcours 9 trous
+
+// 2. CARTE / GREEN FEES RÉDUITS
+//    Accès aux tarifs réduits moyennant une carte annuelle
+var CARTE = {
+  name:        'Carte "LeClub Classic"',
+  desc:        'Green fees réduits',
+  carteAnnuelle: 59,   // € / an  (0 si pas de carte obligatoire)
+  gf18:        49,     // € par parcours 18 trous
+  gf9:         32,     // € par parcours 9 trous
+};
+
+// 3. CARNET DE GREEN FEES
+//    1 ticket = 9 trous  |  2 tickets = 18 trous
+var CARNET = {
+  name:          'Carnet 10 green fees',
+  desc:          '1 ticket = 9 trous  /  2 tickets = 18 trous',
+  nbTickets:     10,    // nombre de tickets dans le carnet
+  prix9Total:   340,    // € prix total du carnet pour jouer en 9 trous
+  prix18Total:  520,    // € prix total du carnet pour jouer en 18 trous
+};
+
+// 4. ABONNEMENT ANNUEL (green fees offerts)
+//    Ajoutez / supprimez des lignes dans le tableau profiles[]
+var ABONNEMENT = {
+  name: 'Abonnement annuel',
+  desc: 'Green fees offerts',
+  profiles: [
+    // { label: 'Nom du profil', monthly: €/mois, annual: €/an comptant }
+    { label: 'Adulte',       monthly: 199, annual: 2334 },
+    { label: 'Adulte Primo', monthly: 159, annual: 1867 },
+    { label: 'Couple',       monthly: 319, annual: 3736 },
+    { label: 'Étudiant',     monthly: 130, annual: 1517 },
+    { label: 'Jeune',        monthly:  80, annual:  467 },
+  ],
+};
+
+/* ============================================================
+   FIN DE LA CONFIGURATION — ne pas modifier en dessous
+   ============================================================ */
+
+var DATA = {
+  pub18: PUB_18,
+  pub9:  PUB_9,
+  formules: [
+    { id:1, name:'Tarif public',   type:'pub',    desc:'Green fees plein tarif' },
+    { id:2, name:CARTE.name,       type:'gf',     desc:CARTE.desc,
+      gf18:CARTE.gf18, gf9:CARTE.gf9, annualCard:CARTE.carteAnnuelle },
+    { id:4, name:CARNET.name,      type:'carnet', desc:CARNET.desc,
+      carnetQty:CARNET.nbTickets, carnet9Total:CARNET.prix9Total, carnet18Total:CARNET.prix18Total },
+    { id:3, name:ABONNEMENT.name,  type:'fixed',  desc:ABONNEMENT.desc,
+      profiles:ABONNEMENT.profiles },
+  ]
+};
+var NID=10;
+
+
 
 function v(id){ var e=document.getElementById(id); return e?(+e.value||0):0; }
+function vt(id){ var e=document.getElementById(id); return e?e.value.trim():''; }
 function fmt(n){ return Math.round(n).toLocaleString('fr-FR')+' €'; }
-
+function tog(id){ var e=document.getElementById(id); e.style.display=e.style.display==='none'?'block':'none'; }
+function togFields(){
+  var t=vt('ntype');
+  document.getElementById('nfixed').style.display=t==='fixed'?'block':'none';
+  document.getElementById('ngf').style.display=t==='gf'?'block':'none';
+  document.getElementById('ncarnet').style.display=t==='carnet'?'block':'none';
+}
 function step(id,d){
   var e=document.getElementById(id);
   e.value=Math.min(+e.max||99,Math.max(+e.min||0,(+e.value||0)+d));
@@ -230,10 +240,10 @@ function getFreq(){
   return {t18:Math.round(f18*(act/52)*10)/10,t9:Math.round(f9*(act/52)*10)/10};
 }
 
-function getFxd(){ return FORMULES.find(function(f){return f.type==='fixed'&&f.profiles;}); }
+function getFxd(){ return DATA.formules.find(function(f){return f.type==='fixed'&&f.profiles;}); }
 
 function costOf(f,t18,t9){
-  if(f.type==='pub')    return t18*GF_PUB_18+t9*GF_PUB_9;
+  if(f.type==='pub')    return t18*DATA.pub18+t9*DATA.pub9;
   if(f.type==='gf')     return (f.annualCard||0)/12+t18*(f.gf18||0)+t9*(f.gf9||0);
   if(f.type==='carnet'){
     var qty=f.carnetQty||10;
@@ -263,7 +273,7 @@ function selP(i){
 
 function calc(){
   var fr=getFreq();
-  var res=FORMULES.map(function(f){
+  var res=DATA.formules.map(function(f){
     return {id:f.id,name:f.name,desc:f.desc||'',type:f.type,cost:costOf(f,fr.t18,fr.t9),fm:f};
   }).sort(function(a,b){return a.cost-b.cost;});
   var best=res[0].cost;
@@ -274,7 +284,9 @@ function calc(){
   var cls=['r1','r2','r3'];
   document.getElementById('ranking').innerHTML=res.map(function(r,i){
     var c=i<3?cls[i]:'rn';
-    var d=i===0?'<span class="rdiff">★ Meilleur choix</span>':'<span class="rdiff">+'+fmt(r.cost-best)+'/mois</span>';
+    var diff=r.cost-best;
+    var pct=best>0?Math.round(diff/best*100):0;
+    var d=i===0?'<span class="rdiff">★ Meilleur choix</span>':'<span class="rdiff">+'+fmt(diff)+'/mois, soit +'+pct+'%</span>';
     return '<div class="rrow '+c+'"><div class="rmedal">'+(i+1)+'</div>'
       +'<div class="rinfo"><div class="rname">'+r.name+'</div><div class="rdetail">'+r.desc+'</div></div>'
       +'<div class="rright"><div class="rprice">'+fmt(r.cost)+'</div><div class="rsub">par mois</div>'+d+'</div></div>';
@@ -312,17 +324,11 @@ function calc(){
       pV.textContent='Les deux options reviennent au même montant annuel.';
     }
   } else { pb.style.display='none'; }
-  var vb=document.getElementById('vbar');
-  var pubr=res.find(function(r){return r.fm.type==='pub';});
-  if(res[0].fm.type==='pub'){
-    vb.className='vbar vgr';
-    vb.textContent='ℹ️ Pour ce rythme, le tarif public est le plus avantageux — aucun engagement nécessaire.';
-  } else {
-    var eco=pubr?pubr.cost-best:0;
-    vb.className='vbar vg';
-    vb.textContent='✅ La formule "'+res[0].name+'" est la plus avantageuse'+(eco>0?' — économie de '+fmt(eco)+'/mois vs le tarif public':'')+'.';
-  }
+
 }
+
+
+
 
 buildPBtns(); calc();
 </script>
